@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import data from '../../db.json'
+import styled from "styled-components";
 
 const Tuyensinh = () => {
   const [news, setNews] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/product")
+      .get("http://localhost:5000/api/v1/new")
       .then((response) => {
         // console.log(response.data.products)
         setNews(response.data.news);
@@ -16,7 +18,7 @@ const Tuyensinh = () => {
         console.log(error);
       });
   }, []);
-  
+  if (!news) return null;
   return (
     <div class='wrap-home-container'>
       <div class='row new-category-title'>
@@ -40,14 +42,13 @@ const Tuyensinh = () => {
             </div>
         </div>
         <div class='col-3-of-6 wrap-next-news'>
-          {data.Tuyensinh && data.Tuyensinh.map((tuyensinh,id) => (
-              
-              <div class='title new-line' key={id} style={{textAlign:'justify'}}>
-            
-                  <li>{tuyensinh.title}</li>
-              </div>
+            {news.map((Tuyensinh) => (
+                        
+                        <div class='new-line' >
 
-              ))}
+                            <li>{Tuyensinh.title}</li>
+                        </div>
+                        ))}
               
         </div>
       </div>

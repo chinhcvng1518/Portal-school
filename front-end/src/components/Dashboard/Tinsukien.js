@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../db.json'
+import axios from 'axios';
 const Tinsukien = () => {
+  const [news, setNews] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/new")
+      .then((response) => {
+        // console.log(response.data.products)
+        setNews(response.data.news);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  if (!news) return null;
   return (
     <div class='wrap-home-container'>
                 <div class='row new-category-title'>
@@ -25,9 +39,9 @@ const Tinsukien = () => {
                       </div>
                   </div>
                   <div class='col-3-of-6 wrap-next-news'>
-                    {data.Tinsukien && data.Tinsukien.map((tinsukien,id) => (
+                    {news.map((tinsukien) => (
                         
-                        <div key={id} class='new-line'>
+                        <div class='new-line'>
                       
                             <li>{tinsukien.title}</li>
                         </div>

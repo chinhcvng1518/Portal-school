@@ -6,7 +6,7 @@ const UserManagement = () => {
   console.log(users);
   return (
     <Wrapper>
-      <section className="section section-center page">
+      <section className="section-center">
         <table className="table table-hover">
           <thead style={{ textAlign: 'center' }}>
             <tr>

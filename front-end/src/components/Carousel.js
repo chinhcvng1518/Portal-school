@@ -32,7 +32,7 @@ const Carousel = () => {
   )
 }
 const Wrapper = styled.div`
-
+  
 `
 
 export default Carousel

@@ -105,6 +105,7 @@ const NewsManagement = () => {
         category: proCategory,
         content: proContent,
         code: proCode,
+        
       })
       .then((response) => {
         showAlert({
@@ -167,6 +168,7 @@ const NewsManagement = () => {
         category: proCategory,
         content: proContent,
         code: proCode,
+        image: imageUrls,
       })
       .then((response) => {
         showAlert({
@@ -268,13 +270,13 @@ const NewsManagement = () => {
   // console.log(selectedProduct)
   return (
     <Wrapper>
-      <section className='section section-center page'>
+      <section className='section-center'>
         <button
           className='btn btn-primary'
           data-bs-toggle='modal'
           data-bs-target='#addModal'
         >
-          Add new 
+          Tạo bài viết
         </button>
         <div>
           {/* <!-- Modal --> */}
@@ -289,7 +291,7 @@ const NewsManagement = () => {
               <div className='modal-content'>
                 <div className='modal-header'>
                   <h5 className='modal-title' id='exampleModalLabel'>
-                    Add new 
+                    Tạo bài viết 
                   </h5>
                   <button
                     type='button'
@@ -310,7 +312,7 @@ const NewsManagement = () => {
                         id='floatingInput'
                         onChange={(e) => setProTitle(e.target.value)}
                       />
-                      <label for='floatingInput'>Title</label>
+                      <label for='floatingInput'>Tiêu đề</label>
                     </div>
                     <div className='form-floating mb-3'>
                       <input
@@ -328,7 +330,7 @@ const NewsManagement = () => {
                         id='floatingName'
                         onChange={(e) => setProAuthor(e.target.value)}
                       />
-                      <label for='floatingName'>Author</label>
+                      <label for='floatingName'>Tác giả</label>
                     </div>
                     <div className='form-floating mb-3'>
                       <input
@@ -337,7 +339,7 @@ const NewsManagement = () => {
                         id='floatingContent'
                         onChange={(e) => setProContent(e.target.value)}
                       />
-                      <label for='floatingContent'>Content</label>
+                      <label for='floatingContent'>Nội dung</label>
                     </div>
                     <div className='form-floating mb-3'>
                       <select
@@ -350,13 +352,13 @@ const NewsManagement = () => {
                         }}
                       >
                         <option selected>
-                          <p className='text-muted'>Select category</p>
+                          <p className='text-muted'>Loại bài viết</p>
                         </option>
                         {category.map((unit) => (
                           <option value={unit.value}>{unit.value}</option>
                         ))}
                       </select>
-                      <label for='floatingBrand'>category</label>
+                      <label for='floatingBrand'>Phân loại</label>
                     </div>
 
                     <div className='form-floating mb-3'>
@@ -375,7 +377,7 @@ const NewsManagement = () => {
                             className='btn btn-primary'
                             onClick={handleUploadImage}
                           >
-                            Upload
+                            Tải lên
                           </button>
                         </div>
                       </form>
@@ -394,10 +396,10 @@ const NewsManagement = () => {
                       className='btn btn-secondary'
                       data-bs-dismiss='modal'
                     >
-                      Close
+                      Đóng
                     </button>
                     <button type='submit' className='btn btn-primary'>
-                      Save
+                      Lưu
                     </button>
                   </div>
                 </form>
@@ -409,10 +411,11 @@ const NewsManagement = () => {
           <thead style={{ textAlign: 'center' }}>
             <tr>
               <th scope='col'>#</th>
-              <th scope='col'>Title</th>
-              <th scope='col'>Author</th>
-              <th scope='col'>Category</th>
-              <th scope='col'>Actions</th>
+              <th scope='col'>Tiêu đề</th>
+              <th scope='col'>Tác giả</th>
+              <th scope='col'>Hình ảnh</th>
+              <th scope='col'>Phân loại</th>
+              <th scope='col'>Hành động</th>
             </tr>
           </thead>
           <tbody style={{ textAlign: 'center' }}>
@@ -421,10 +424,9 @@ const NewsManagement = () => {
                 <th scope='row'>{index + 1} </th>
                 <td style={{ verticalAlign: 'middle' }}>{val.title}</td>
                 <td style={{ verticalAlign: 'middle' }}>{val.author}</td>
+                <td><img src={val.image[0]} width='20%'/></td>
                 <td style={{ verticalAlign: 'middle' }}>{val.category}</td>
-                <td>
-                  {/* <img src={val.image[]} alt='new-img' width='20%' /> */}
-                </td>
+        
                 <td
                   style={{
                     display: 'grid',
@@ -440,7 +442,7 @@ const NewsManagement = () => {
                       setSelectedNew(val)
                     }}
                   >
-                    Edit
+                    Sửa
                   </button>
                   <button
                     className='btn btn-danger'
@@ -448,7 +450,7 @@ const NewsManagement = () => {
                     data-bs-target='#deleteModal'
                     onClick={() => setSelectedNew(val)}
                   >
-                    Delete
+                    Xóa
                   </button>
                 </td>
               </tr>
@@ -466,7 +468,7 @@ const NewsManagement = () => {
                 <div className='modal-content'>
                   <div className='modal-header'>
                     <h5 className='modal-title' id='exampleModalLabel'>
-                      Update news {selectedNew.title}
+                      Cập nhật bài viết {selectedNew.title}
                     </h5>
                     <button
                       type='button'
@@ -488,7 +490,7 @@ const NewsManagement = () => {
                           defaultValue={selectedNew.title}
                           onChange={(e) => setProTitle(e.target.value)}
                         />
-                        <label for='floatingInput'>Title</label>
+                        <label for='floatingInput'>Tiêu đề</label>
                       </div>
                       <div className='form-floating mb-3'>
                       <input
@@ -508,7 +510,7 @@ const NewsManagement = () => {
                           value={selectedNew.author}
                           onChange={(e) => setProAuthor(e.target.value)}
                         />
-                        <label for='floatingName'>Author</label>
+                        <label for='floatingName'>Tác giả</label>
                       </div>
                       <div className='form-floating mb-3'>
                         <input
@@ -518,7 +520,7 @@ const NewsManagement = () => {
                           defaultValue={selectedNew.content}
                           onChange={(e) => setProContent(e.target.value)}
                         />
-                        <label for='floatingContent'>Content</label>
+                        <label for='floatingContent'>Nội dung</label>
                       </div>
                       <div className='form-floating mb-3'>
                         <select
@@ -533,17 +535,18 @@ const NewsManagement = () => {
                           }}
                         >
                           <option selected>
-                            <p className='text-muted'>Select category</p>
+                            <p className='text-muted'>Loại bài viết</p>
                           </option>
                           {category.map((unit) => (
                             <option value={unit.value}>{unit.value}</option>
                           ))}
                         </select>
-                        <label for='floatingBrand'>category</label>
+                        <label for='floatingBrand'>Phân loại</label>
                       </div>
 
                       <div className='form-floating mb-3'>
-                        <label>Image</label>
+                        <label>Hình ảnh</label>
+                        <br />
                         <br />
                         <div className='images' id='floatingImage'>
                           {selectedNew.image
@@ -602,8 +605,8 @@ const NewsManagement = () => {
                 <div className='modal-content'>
                   <div className='modal-header'>
                     <h5 className='modal-title' id='deleteModalLabel'>
-                      You want to delete
-                      {selectedNew.title ? selectedNew.title : '?'}
+                      Bạn muốn xóa <br/>
+                      {selectedNew.title ? selectedNew.title : '?'}?
                     </h5>
 
                     <button
@@ -634,14 +637,14 @@ const NewsManagement = () => {
                       className='btn btn-secondary'
                       data-bs-dismiss='modal'
                     >
-                      Close
+                      Đóng
                     </button>
                     <button
                       type='button'
                       className='btn btn-danger'
                       onClick={handleDeleteNew}
                     >
-                      Delete
+                      Xóa
                     </button>
                   </div>
                 </div>
@@ -653,7 +656,7 @@ const NewsManagement = () => {
     </Wrapper>
   )
 }
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   .alert {
     margin-top: 3rem;
   }

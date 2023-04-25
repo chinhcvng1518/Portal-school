@@ -97,7 +97,7 @@ const updateNew = async (req, res) => {
 
 // DELETE NEW
 const deleteNew = async (req, res) => {
-  const news = await New.findOne({ _id: req.params.id })
+  const news = await New.findOneAndDelete({ _id: req.params.id })
 
   if (!news) {
     throw new customError(
@@ -106,20 +106,20 @@ const deleteNew = async (req, res) => {
     )
   }
 
-  // console.log('ok')
-  // res.status(200).json({ msg: product })
+  console.log('ok')
+  res.status(200).json({ msg: news })
 
-  // await cloudinary.api.delete_resources_by_prefix(`Products/${product.code}`)
+  // await cloudinary.api.delete_resources_by_prefix(`News/${news.code}`)
   // cloudinary.api
-  //   .delete_resources_by_prefix(`Products/${product.code}`)
+  //   .delete_resources_by_prefix(`News/${news.code}`)
   //   .then(() => {
   //     axios
   //       .delete('http://127.0.0.1:8000/api/v1/delete-many-images-from-milvus', {
-  //         data: { productBrand: product.brand, productCode: product.code },
+  //         data: { newCategory: news.category, newCode: news.code },
   //       })
   //       .then(() => {
-  //         product.remove().then(() => {
-  //           return res.status(200).json({ msg: 'Delete Product Successfully' })
+  //         news.remove().then(() => {
+  //           return res.status(200).json({ msg: 'Delete New Successfully' })
   //         })
   //       })
   //   })
@@ -152,7 +152,6 @@ const deleteImage = async (req, res) => {
   if (!news) {
     throw new customError('Bài viết không tồn tại', 400)
   }
-  const newCategory = news.category
 
   // REMOVE IMAGE ON CLOUDINARY
   const start = imageURL.indexOf('News')

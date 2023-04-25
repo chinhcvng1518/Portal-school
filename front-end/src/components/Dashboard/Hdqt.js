@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../../db.json'
+import axios from 'axios';
 
 const Hdqt = () => {
+  const [news, setNews] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/new")
+      .then((response) => {
+        // console.log(response.data.products)
+        setNews(response.data.news);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  if (!news) return null;
   return (
     <div class='wrap-home-container'>
                 <div class='row new-category-title'>
@@ -26,9 +40,9 @@ const Hdqt = () => {
                       </div>
                   </div>
                   <div class='col-3-of-6 wrap-next-news' style={{ textAlign:'justify'}}>
-                    {data.Hoatdongquocte && data.Hoatdongquocte.map((hoatdongquocte,id) => (
+                    {news.map((hoatdongquocte) => (
                         
-                        <div key={id} class='new-line'>
+                        <div class='new-line'>
                       
                             <li>{hoatdongquocte.title}</li>
                         </div>

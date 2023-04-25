@@ -433,8 +433,6 @@ span {
 /* form */
 
 .form {
-  width: var(--fluid-width);
-  max-width: var(--fixed-width);
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
