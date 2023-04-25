@@ -508,7 +508,7 @@ const NewsManagement = () => {
                           type='text'
                           className='form-control'
                           id='floatingName'
-                          value={selectedNew.author}
+                          defaultValue={selectedNew.author}
                           onChange={(e) => setProAuthor(e.target.value)}
                         />
                         <label for='floatingName'>Tác giả</label>

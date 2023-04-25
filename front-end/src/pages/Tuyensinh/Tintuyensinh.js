@@ -1,54 +1,57 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import data from '../../db.json'
 import { Link } from 'react-router-dom'
 import image16 from "../../assets/image16.png"
+import axios from "axios";
 
 const Tintuyensinh = () => {
+  const [news, setNews] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/new")
+      .then((response) => {
+        // console.log(response.data.products)
+        setNews(response.data.news);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  if (!news) return null;
   return (
-    <section className='section-center page'>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a><Link to='/'>Trang chủ</Link></a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                <a><Link to='/tin-tuyen-sinh'>Tin tuyển sinh</Link></a>
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </nav>
-        <div class="row">
-            <div class="col-8">
-                <h5 style={{backgroundColor:'#f2f2f2'}}>Tin tuyển sinh</h5>
-                <table className="table table-hover">
-                  <tbody style={{ textAlign: 'center' }}>
-                    {data.Tuyensinh && data.Tuyensinh.map((tuyensinh) => (
-                      <tr>
-                        <td><img src={tuyensinh.imageUrl} height={128}/></td>
-                        <td class='text-start'>{tuyensinh.title}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+    <div class='container-home'>
+      <div class='wrap-body-container'>
+        <div class='row header'>
+          <div class='row wrap-general-news'>
+            <div class='col-4-of-6 left-general-news'>
+              <section class='section-center-left'>
+                <div class='wrap-container'>
+                  <div class='row news-category-title'>
+                    <div class='wrap-title'>
+                      Tuyển sinh - Đào tạo
+                    </div>
+                    <div class='row wrap-list-news'>
+                      <div class='col-8-of-8 wrap-normal-news'>
+                        <div class='col-2-of-8 wrap-image'>
+                        {news.map((noibat) => (
+                
+                        <img src={noibat.image[0]}/>
+                        ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            <div class='col-4'>
-                <h5>Nổi bật</h5>
-                <table className="table table-hover">
-                  <tbody>
-                    {data.Noibat && data.Noibat.map((noibat) => (
-                      <tr>
-                        <td>{noibat.title}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <img  src={image16}/>
-                </table>
-              </div>
+              </section>
+            </div>
+            <div class='col-2-of-6 right-general-news'>
+
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
   )
 }
 

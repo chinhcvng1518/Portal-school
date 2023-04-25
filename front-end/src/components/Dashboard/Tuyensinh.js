@@ -12,7 +12,7 @@ const Tuyensinh = () => {
       .get("http://localhost:5000/api/v1/new")
       .then((response) => {
         // console.log(response.data.products)
-        setSelectedCategory(response.data.news);
+        setNews(response.data.news);
       })
       .catch((error) => {
         console.log(error);
@@ -27,15 +27,14 @@ const Tuyensinh = () => {
         </Link>
 
       </div>
-      {selectedCategory.map(({category}, index) => (
       <div class='row wrap-admission-news'>
         <div class='col-3-of-6 wrap-first-news'>
             <div class='wrap-image'>
-              {/* <img src={data.Tuyensinh[0].imageUrl} style={{width:'100%', height:'100%'}}/> */}
+              <img src={data.Tuyensinh[0].imageUrl} style={{width:'100%', height:'100%'}}/>
             </div>
             <div class='wrap-news'>
-              <div class='news-title' key={index} onClick={() =>setSelectedCategory(selectedCategory.title)}>
-                {selectedCategory.title}
+              <div class='news-title'>
+                {data.Tuyensinh[0].title}
                 
               </div>
               <div class='news-summary'>
@@ -44,16 +43,21 @@ const Tuyensinh = () => {
             </div>
         </div>
         <div class='col-3-of-6 wrap-next-news'>
-                        
-                        <div class='new-line' >
+          {news.map((Tuyensinh, index) =>
+                    {
+                    
+                    if(index >= 6) return null;
 
-                            <li>{Tuyensinh.title}</li>
-                        </div>
-                        
-              
+                    return(
+                      <div class='new-line'>
+                        <li key={Tuyensinh.id}>
+                          {Tuyensinh.title}
+                        </li>
+                      </div>
+                    )}
+                  )}
         </div>
       </div>
-      ))}
       <div class='view-more'>
         <Link to='/thong-tin-tuyen-sinh'>Xem tiếp ></Link>
       </div> 

@@ -39,13 +39,19 @@ const Tinsukien = () => {
                       </div>
                   </div>
                   <div class='col-3-of-6 wrap-next-news'>
-                    {news.map((tinsukien) => (
-                        
-                        <div class='new-line'>
-                      
-                            <li>{tinsukien.title}</li>
-                        </div>
-                        ))}
+                  {news.map((Tinsukien, index) =>
+                    {
+                    
+                    if(index >= 6) return null;
+
+                    return(
+                      <div class='new-line'>
+                        <li key={Tinsukien.id}>
+                          {Tinsukien.title}
+                        </li>
+                      </div>
+                    )}
+                  )}
                   </div>
                 </div>
                 <div class='view-more'>

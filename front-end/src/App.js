@@ -98,12 +98,12 @@ function App() {
         <Route path='/dn' exact>
           <Doanhnghiep/>
         </Route>
-        <Route path='/users-management' exact>
+        <ProtectedRoute path='/users-management' exact>
           <UserManagement />
-        </Route>
-        <Route path='/news-management'>
+        </ProtectedRoute>
+        <ProtectedRoute path='/news-management'>
           <NewsManagement/>
-        </Route>
+        </ProtectedRoute>
         <Route path='*'>
           <Error />
         </Route>

@@ -40,13 +40,19 @@ const Hdqt = () => {
                       </div>
                   </div>
                   <div class='col-3-of-6 wrap-next-news' style={{ textAlign:'justify'}}>
-                    {news.map((hoatdongquocte) => (
-                        
-                        <div class='new-line'>
-                      
-                            <li>{hoatdongquocte.title}</li>
-                        </div>
-                        ))}
+                    {news.map((Hdqt, index) =>
+                    {
+                    
+                    if(index >= 6) return null;
+
+                    return(
+                      <div class='new-line'>
+                        <li key={Hdqt.id}>
+                          {Hdqt.title}
+                        </li>
+                      </div>
+                    )}
+                  )}
                   </div>
                 </div>
               </div>

@@ -324,6 +324,24 @@ span {
   padding-bottom: 10px;
   margin-bottom: 5px;
 }
+.wrap-normal-news{
+  border-bottom: dotted 1px #ccc;
+  padding-bottom: 20px;
+  padding: 10px 0;
+  overflow: hidden;
+  max-height: 150px;
+}
+.new-title{
+  font-size: 13px;
+  line-height: 18px;
+  clear: both;
+}
+.new-summary{
+  color:#555;
+  margin-top: 6px;
+  text-align: justify;
+  line-height: 20px;
+}
 
 .wrap-container {
   color: #267dbb;
@@ -433,6 +451,7 @@ span {
 /* form */
 
 .form {
+  
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
