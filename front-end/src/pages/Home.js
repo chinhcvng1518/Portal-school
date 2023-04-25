@@ -14,6 +14,7 @@ import References from '../components/Dashboard/References';
 import Video from '../components/Dashboard/Video';
 import Podcast from '../components/Dashboard/Podcast';
 import Newsletter from '../components/Dashboard/Newsletter';
+import Nganhdaotao from '../components/Nganhdaotao'
 function Home() {
   const { user } = useGlobalContext();
   return (
@@ -38,10 +39,13 @@ function Home() {
           </section>
         </div>
       </div>
+      
+      <Nganhdaotao/>
     </Wrapper>
   );
 }
 const Wrapper = styled.section`
+  
 `
 
 export default Home;

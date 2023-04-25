@@ -6,7 +6,7 @@ import partner2 from "../assets/image15.jpg"
 
 const Nganhdaotao = () => {
   return (
-    <Wrapper className='section-center'>
+    <Wrapper>
         <section class='section-bottom'>
             <div class='wrap-container'>
                 <div class='wrap-program-title'>
