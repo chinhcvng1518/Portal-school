@@ -1,26 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import image4 from "../assets/image4.jpg"
 import image5 from "../assets/image5.jpg"
 import { Link } from 'react-router-dom'
 import banner1 from '../assets/banner1.png'
 import data from '../db.json'
 import styled from 'styled-components'
+import Noibat from '../components/Dashboard/Noibat'
+import References from '../components/Dashboard/References'
+import Podcast from '../components/Dashboard/Podcast'
+import Video from '../components/Dashboard/Video'
+import {formatISO9075} from "date-fns";
+import axios from 'axios'
+
 
 const About = () => {
+  const [news, setNews] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/new")
+      .then((response) => {
+        // console.log(response.data.products)
+        setNews(response.data.news);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  if (!news) return null;
   return (
     <Wrapper>
       <section className='section-center'>
       <div class='wrap-body-container'>
 
         <div class='row wrap-general-news'>
-          <div class='col-4-of-6 left-general-news'>
+          <div class='col-md-8 left-general-news'>
             <section class='section-center-left'>
               <div class='wrap-container-detail'>
                 <div class='row news-category-title'> 
                   <div class='wrap-title'>Giới thiệu</div>
                 </div>              
                 <div class='row wrap-news-detail'>
-                    <h1 class='news-detail-title'>Tổng quan UEF</h1>
+                    <div class='new-detail-title'>Tổng quan UEF</div>
+                    <div class='new-date'>
+                        <time>{formatISO9075(new Date())}</time>
+                    </div>
                     <div class='news-date'></div>
                     <div class='wrap-contents news-contents'>
                       <p>
@@ -44,120 +67,37 @@ const About = () => {
                       </p>
                     </div>
                 </div>
+                
+              </div>
+              <div class='row news-relation-title'>
+                Tin liên quan
+              </div>
+              <div class='news-related'>
+              {news.map((Noibat, index) =>
+                              {
+                              
+                              if(index >= 6) return null;
+
+                              return(
+                                <div class='title new-line'>
+                                  <li key={Noibat.id}>
+                                    <Link to={`/tin-tuyen-sinh/${Noibat._id}`}> {Noibat.title}</Link>
+                                  </li>
+                                </div>
+                                
+                              )}
+                            )}
               </div>
             </section>
           </div>
-                    <div class='col-2-of-6 right-general-news'>
+          <div class='col-md-4 right-general-news'>
             <section class='section-center-right'>
-              <div class='wrap-home-notify'>
-                <div class='row new-category-title'>
-                  <Link >
-                    <div class='wrap-title'>
-                      Nổi bật
-                    </div>
-                  </Link>
-                </div>
-                <div class='row wrap-school-notify' style={{textAlign:'justify'}}>
-                  {data.Noibat && data.Noibat.map((noibat,id) => (
-                          
-                          <div key={id} class='new-line'>
-                        
-                              <li>{noibat.title}</li>
-                          </div>
-                          ))}
-                  </div>
-                </div>
+              <Noibat/>
+              <References/>
+              <Video/>
+              <Podcast/>
             </section>
-            <section class='section-center-right'>
-              <div>
-                <div class='quick-reference'>
-                  <ul>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image' width='100%'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-            <section class='section-center-right'>
-              <div class='wrap-video-container'>
-                <div class='row news-category-title'>
-                  <div class='wrap-title'>
-                    Video
-                  </div>
-                  <div class='video'>
-                    <Link>
-                      <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" width="100%" height="300" src="https://www.youtube.com/embed/yjE6OlsTdFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div class='wrap-video-container'>
-                <div class='row news-category-title'>
-                  <div class='wrap-title'>
-                    UEF.Podcast
-                  </div>
-                  <div class='podcast'>&nbsp;</div>
-                </div>
-              </div>
-            </section>
-            <section class='section-center-right'>
-              <div class='wrap-video-container'>
-                <div class='row news-category-title'>
-                  <div class='wrap-title'>Newsletter</div>
-                  <div>&nbsp;</div>
-                </div>
-                <Link>
-                  <div class='row news-category-title'>
-                    <div class='wrap-title'>Kỷ yếu 15 năm</div>
-                  </div>
-                </Link>
-              </div>
-            </section>
+           
           </div>
         </div>
       </div>

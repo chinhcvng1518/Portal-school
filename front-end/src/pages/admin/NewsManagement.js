@@ -1,8 +1,13 @@
 import axios from 'axios'
-
-import React, { useEffect, useState } from 'react'
+import { Editor } from '@tinymce/tinymce-react';
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import useLocalState from '../../utils/localState'
+import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill';
+import ImageUploader from "quill-image-uploader";
+
+
 const NewsManagement = () => {
   const [news, setNews] = useState()
   const [selectedNew, setSelectedNew] = useState([])
@@ -12,12 +17,33 @@ const NewsManagement = () => {
   const [proCategory, setProCategory] = useState()
   const [proCode, setProCode] = useState()
   const [proImage, setProImage] = useState([])
-    const [proContent, setProContent] = useState([])
+  const [proContent, setProContent] = useState([])
 
   const [imageUrls, setImageUrls] = useState([])
   const [tmpImgs, setTmpImgs] = useState([])
-
-
+  const [timContent, setTimContent] = useState([])
+  const editorRef = useRef(null);
+  const log = () => {
+    if (editorRef.current) {
+      setTimContent(editorRef.current.getContent())
+    }
+  };
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' },
+      ],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+  
+  
   const category = [
     { key: 1, value: 'Tuyển sinh - Đào tạo' },
     { key: 2, value: 'Tin tức sự kiện' },
@@ -29,7 +55,7 @@ const NewsManagement = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/v1/new')
+      .get('http://localhost:5000/api/new')
       .then((response) => {
         setNews(response.data.news)
       })
@@ -94,7 +120,7 @@ const NewsManagement = () => {
     e.preventDefault()
     hideAlert()
     setLoading(true)
-    const url = `http://localhost:5000/api/v1/new/${selectedNew._id}`
+    const url = `http://localhost:5000/api/new/${selectedNew._id}`
     const instance = axios.create({
       withCredentials: true,
     })
@@ -127,7 +153,7 @@ const NewsManagement = () => {
     e.preventDefault()
     // console.log(selectedProduct.id)
 
-    const url = `http://localhost:5000/api/v1/new/${selectedNew._id}`
+    const url = `http://localhost:5000/api/new/${selectedNew._id}`
 
     const instance = axios.create({
       withCredentials: true,
@@ -162,7 +188,7 @@ const NewsManagement = () => {
     })
 
     instance
-      .post('http://localhost:5000/api/v1/new', {
+      .post('http://localhost:5000/api/new', {
         title: proTitle,
         author: proAuthor,
         category: proCategory,
@@ -217,7 +243,7 @@ const NewsManagement = () => {
 
     instance
       .post(
-        `http://localhost:5000/api/v1/new/upload-new-image/${proCode}`,
+        `http://localhost:5000/api/new/upload-new-image/${proCode}`,
         data
       )
       .then((response) => {
@@ -246,7 +272,7 @@ const NewsManagement = () => {
       withCredentials: true,
     })
 
-    let url = `http://localhost:5000/api/v1/new/delete-image/${newCode}`
+    let url = `http://localhost:5000/api/new/delete-image/${newCode}`
     let data = { imageURL: imgurl }
 
     instance
@@ -266,8 +292,7 @@ const NewsManagement = () => {
    }
 
   if (!news) return null
-  // console.log(products)
-  // console.log(selectedProduct)
+
   return (
     <Wrapper>
       <section className='section-center'>
@@ -279,7 +304,7 @@ const NewsManagement = () => {
           Tạo bài viết
         </button>
         <br/><br/>
-        <div>
+        <div> 
           {/* <!-- Modal --> */}
           <div
             className='modal fade'
@@ -334,13 +359,7 @@ const NewsManagement = () => {
                       <label for='floatingName'>Tác giả</label>
                     </div>
                     <div className='form-floating mb-3'>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='floatingContent'
-                        onChange={(e) => setProContent(e.target.value)}
-                      />
-                      <label for='floatingContent'>Nội dung</label>
+                      <ReactQuill value={proContent} onChange={setProContent} modules={modules} />                    
                     </div>
                     <div className='form-floating mb-3'>
                       <select
@@ -514,14 +533,7 @@ const NewsManagement = () => {
                         <label for='floatingName'>Tác giả</label>
                       </div>
                       <div className='form-floating mb-3'>
-                        <input
-                          type='text'
-                          className='form-control'
-                          id='floatingContent'
-                          defaultValue={selectedNew.content}
-                          onChange={(e) => setProContent(e.target.value)}
-                        />
-                        <label for='floatingContent'>Nội dung</label>
+                        <ReactQuill value={selectedNew.content} onChange={setSelectedNew.content} modules={modules} />
                       </div>
                       <div className='form-floating mb-3'>
                         <select

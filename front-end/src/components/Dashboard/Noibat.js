@@ -7,7 +7,7 @@ const Noibat = () => {
   const [news, setNews] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/new")
+      .get("http://localhost:5000/api/new")
       .then((response) => {
         // console.log(response.data.products)
         setNews(response.data.news);
@@ -27,13 +27,20 @@ const Noibat = () => {
         </Link>
       </div>
       <div class='row wrap-school-notify' style={{textAlign:'justify'}}>
-        {news.map((noibat) => (
-                
-                <div class='new-line'>
-              
-                    <li>{noibat.title}</li>
-                </div>
-                ))}
+      {news.map((Noibat, index) =>
+                              {
+                              
+                              if(index >= 6) return null;
+
+                              return(
+                                <div class='title new-line'>
+                                  <li key={Noibat.id}>
+                                    <Link to={`/tin-tuyen-sinh/${Noibat._id}`}> {Noibat.title}</Link>
+                                  </li>
+                                </div>
+                                
+                              )}
+                            )}
         </div>
       </div>
   )

@@ -12,7 +12,6 @@ import {
   About,
   Strength,
   Huongnghiep,
-  Thongtintuyensinh,
   Tuvan,
   Hocphi,
 } from './pages';
@@ -28,6 +27,10 @@ import Vienquocte from './pages/Vienquocte';
 import Doanhnghiep from './pages/Doanhnghiep';
 import UserManagement from './pages/admin/UserManagement';
 import NewsManagement from './pages/admin/NewsManagement';
+import SingleNew from './pages/SingleNew';
+import Tinsukien from './components/Dashboard/Tinsukien';
+import Tintuyensinh from './pages/Tintuyensinh';
+import Search from './pages/Search';
 function App() {
   const { isLoading } = useGlobalContext();
   if (isLoading) {
@@ -77,14 +80,17 @@ function App() {
         <Route path='/bds' exact>
           <Bds/>
         </Route>
+        <Route path='/search' exact>
+          <Search/>
+        </Route>
         <Route path='/cntthong' exact>
           <Cntthong/>
         </Route>
         <Route path='/cntc' exact>
           <Cntc/>
         </Route>
-        <Route path='/thong-tin-tuyen-sinh' exact>
-          <Thongtintuyensinh/>
+        <Route path='/tin-tuyen-sinh' exact>
+          <Tintuyensinh/>
         </Route>
         <Route path='/tu-van-tuyen-sinh' exact>
           <Tuvan/>
@@ -97,6 +103,9 @@ function App() {
         </Route>
         <Route path='/dn' exact>
           <Doanhnghiep/>
+        </Route>
+        <Route path='/tin-tuyen-sinh/:id' exact>
+          <SingleNew/>
         </Route>
         <ProtectedRoute path='/users-management' exact>
           <UserManagement />

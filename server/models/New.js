@@ -40,6 +40,7 @@ const NewSchema = new mongoose.Schema(
     },
     image: { type: [String], required: true, trim: true, default: [] },
   },
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 )
 
 NewSchema.pre('findOneAndUpdate', async function () {

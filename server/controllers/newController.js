@@ -1,4 +1,6 @@
+const APIFeatures = require("../utils/apiFeatures");
 const New = require('../models/New')
+const Category = require('../models/CategoryNews')
 
 const customError = require('../errors/customError')
 const cloudinary = require('cloudinary').v2
@@ -9,10 +11,14 @@ const uploadImage = require('../utils/uploadImage')
 
 // GET ALL NEWS
 const getAllNews = async (req, res) => {
-  const news = await New.find(
-    {}  )
+  const resPerPage = 12;
+  const newsCount = await New.countDocuments();
+  const apiFeatures = new APIFeatures(New.find(), req.query)
+    .search()
+    .pagination(resPerPage)
 
-  res.status(200).json({ totalNews: news.length, news })
+  let news = await apiFeatures.query
+  res.status(200).json({success: true ,newsCount, resPerPage, news})
 }
 
 // GET SINGLE NEW
@@ -155,9 +161,9 @@ const deleteImage = async (req, res) => {
 
   // REMOVE IMAGE ON CLOUDINARY
   const start = imageURL.indexOf('News')
-  const tmpPublicId = imageURL.slice(start) // "News/suv1/tmp-1-1667307770831_klv8lu.jpg"
+  const tmpPublicId = imageURL.slice(start) 
   const end = tmpPublicId.indexOf('.')
-  const publicId = tmpPublicId.slice(0, end) // "News/suv1/tmp-1-1667307770831_klv8lu"
+  const publicId = tmpPublicId.slice(0, end) 
 
   const deletedImg = await cloudinary.uploader.destroy(publicId)
 
@@ -177,6 +183,11 @@ const deleteImage = async (req, res) => {
 
   res.status(200).json({ news })
 }
+const getCategory = async(req,res)=>{
+  const cate = Category.find();
+  // const news = await New.find({category :  cate.category_name});
+  res.status(200).json(cate);
+};
 
 module.exports = {
   getAllNews,
@@ -186,4 +197,5 @@ module.exports = {
   deleteNew,
   uploadNewImage,
   deleteImage,
+  getCategory
 }

@@ -67,7 +67,7 @@ const Navbar = () => {
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item"><Link to='/huongnghiep'>Hướng nghiệp</Link></a></li>
-            <li><a class="dropdown-item"><Link to='/thong-tin-tuyen-sinh'>Thông tin tuyển sinh</Link></a></li>
+            <li><a class="dropdown-item"><Link to='/tin-tuyen-sinh'>Thông tin tuyển sinh</Link></a></li>
             <li><a class="dropdown-item"><Link to='/tu-van-tuyen-sinh'>Tư vấn tuyển sinh</Link></a></li>
             <li><a class="dropdown-item"><Link to='/tu-van-tuyen-sinh'>Cẩm nang tuyển sinh</Link></a></li>
             <li><a class="dropdown-item"><Link to='/tu-van-tuyen-sinh'>Kết quả tuyển sinh</Link></a></li>
@@ -133,7 +133,8 @@ const Navbar = () => {
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <Link to='search'><button class="btn btn-outline-success" type="submit">Search</button></Link>
+        
       </form>
           <div className='cart-btn-wrapper'>
       {!user ? (

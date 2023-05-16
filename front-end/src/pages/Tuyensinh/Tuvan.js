@@ -4,6 +4,7 @@ import data from "../../db.json"
 import image16 from "../../assets/image16.png"
 import { Link } from 'react-router-dom'
 import banner1 from '../../assets/banner1.png'
+import References from '../../components/Dashboard/References'
 const Tuvan = () => {
   return (
     <>
@@ -53,7 +54,7 @@ const Tuvan = () => {
                 </div>
                 <div class='row wrap-school-notify' style={{textAlign:'justify'}}>
                     <div class='wrap-contents news-contents'>
-                    <form>
+                    <form method='post' class='contact-form'>
                         <div class="form-group">
                             <label for="exampleInputName">Họ tên</label>
                             <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Nhập họ tên"/>
@@ -85,57 +86,7 @@ const Tuvan = () => {
                 </div>
             </section>
             <section class='section-center-right'>
-              <div>
-                <div class='quick-reference'>
-                  <ul>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                    <li class='wrap-link-image' width='100%'>
-                      <Link>
-                        <span><img src={banner1} width='100%'/></span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <References/>
             </section>
           </div>
         </div>

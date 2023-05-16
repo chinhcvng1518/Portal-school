@@ -248,13 +248,21 @@ ul {
 .wrap-news {
   font-size: 13px;
 }
+.wrap-news-info{
+  padding-left: 10px;
+}
 
 .news-title {
   line-height: 18px;
-  padding-top: 5px;
+  font-size: 13px;
+  padding-top: 0px;
   font-weight: bold;
   clear: both;
-  text-align: left;
+}
+.news-title a{
+  color: #113D70;
+  font-size: 13px;
+  text-decoration: none;
 }
 
 .news-summary {
@@ -276,12 +284,20 @@ ul {
   padding-top: 10px;
   position: relative;
   clear: both;
+  border: solid 1px #efefef;
 }
-
 .wrap-link-image {
   height: 60px;
+  width: 100%;
+  list-style-type: none;
+  text-align: center;
+  padding: 5px 5px 0 5px;
 }
-
+.wrap-link-image a {
+  display: inline-block;
+  padding: 0;
+  line-height: 0;
+}
 .wrap-link-image a:hover {
   opacity: 0.8;
 }
@@ -331,6 +347,12 @@ span {
   overflow: hidden;
   max-height: 150px;
 }
+wrap-image{
+  float: left;
+  max-height: 105px;
+  overflow: hidden;
+  max-width: 210px;
+}
 .new-title{
   font-size: 13px;
   line-height: 18px;
@@ -342,7 +364,32 @@ span {
   text-align: justify;
   line-height: 20px;
 }
+.new-date{
+  font-size: 13px;
+}
+.wrap-content{
+  text-align: justify;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.new-detail-title{
+  text-align: justify;
+  font-size: 18px;
+  color: black;
+  line-height: 25px;
+}
+.figure{
+  text-align: center;
+  display: block;
+}
 
+.wrap-content .figure-caption{
+  font-size: 13px;
+  line-height: 23px;
+}
+.author{
+  text-align: right;
+}
 .wrap-container {
   color: #267dbb;
   padding-top: 6px;
@@ -520,8 +567,14 @@ span {
 
 /* title */
 
-.title {
-  text-align: center;
+.title a{
+  color:#000;
+  font-size: 13px;
+
+}
+
+.title a:hover{
+  color: #b61020;
 }
 
 .title-underline {

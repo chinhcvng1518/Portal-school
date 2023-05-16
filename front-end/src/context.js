@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/user/showMe`)
+      const { data } = await axios.get(`/api/user/showMe`)
       saveUser(data.user)
       console.log(data.user)
     } catch (error) {
@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      await axios.delete('/api/v1/auth/logout')
+      await axios.delete('/api/auth/logout')
       removeUser()
     } catch (error) {
       console.log(error)
@@ -43,7 +43,7 @@ const AppProvider = ({ children }) => {
       const instance = axios.create({
         withCredentials: true,
       })
-      const { data } = await instance.get(`/api/v1/user`)
+      const { data } = await instance.get(`/api/user`)
       setUsers(data.users)
     } catch (error) {
       setUsers([])

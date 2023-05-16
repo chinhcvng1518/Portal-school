@@ -6,6 +6,7 @@ const {
   deleteNew,
   uploadNewImage,
   deleteImage,
+  getCategory,
 } = require('../controllers/newController')
 
 const {
@@ -36,5 +37,5 @@ router
   .patch([authenticateUser, authorizePermissions('admin')], updateNew)
   .delete([authenticateUser, authorizePermissions('admin')], deleteNew)
 
-
+router.route('/category').get([authenticateUser, authorizePermissions('admin')],getCategory)
 module.exports = router
