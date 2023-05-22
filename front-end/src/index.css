@@ -163,66 +163,7 @@ ul {
   min-height: 1px
 }
 
-.col-1-of-6 {
-  width: 16.66%
-}
 
-.col-2-of-6 {
-  width: 33.33%
-}
-
-.col-3-of-6 {
-  width: 50%
-}
-
-.col-4-of-6 {
-  width: 66.66%
-}
-
-.col-5-of-6 {
-  width: 83.33%
-}
-
-.col-6-of-6 {
-  width: 100%
-}
-
-.col-05-of-8 {
-  width: 6.25%
-}
-
-.col-1-of-8 {
-  width: 12.5%
-}
-
-.col-2-of-8 {
-  width: 25%
-}
-
-.col-3-of-8 {
-  width: 37.5%
-}
-
-.col-4-of-8 {
-  width: 50%
-}
-
-.col-5-of-8 {
-  width: 62.5%
-}
-
-.col-6-of-8 {
-  width: 75%
-}
-
-.col-7-of-8 {
-  width: 87.5%
-}
-
-.col-8-of-8 {
-  width: 100%
-}
-  
 
 .wrap-title {
   color: #267dbb;
@@ -408,6 +349,21 @@ wrap-image{
   background-color: #f2f2f2;
   width: 100%;
 }
+.major-home-block{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  border-right: solid 1px #efefef;
+}
+.major-home-title{
+  width: 100%;
+  display: block;
+  padding: 10px 0px 10px 2px;
+}
+
+.major-home-title a:hover {
+    color: #1661B6
+}
 
 .view-more {
   text-align: right;
@@ -572,8 +528,7 @@ wrap-image{
   font-size: 13px;
 
 }
-
-.title a:hover{
+a:hover{
   color: #b61020;
 }
 

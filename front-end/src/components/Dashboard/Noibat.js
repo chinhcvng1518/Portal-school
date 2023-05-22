@@ -20,27 +20,27 @@ const Noibat = () => {
   return (
     <div class='wrap-home-notify'>
       <div class='row new-category-title'>
-        <Link >
+        <Link to='/noi-bat'>
           <div class='wrap-title'>
             Nổi bật
           </div>
         </Link>
       </div>
-      <div class='row wrap-school-notify' style={{textAlign:'justify'}}>
+      <div class='col wrap-school-notify' style={{textAlign:'justify'}}>
       {news.map((Noibat, index) =>
-                              {
-                              
-                              if(index >= 6) return null;
+          {
+          
+          if(index >= 6) return null;
 
-                              return(
-                                <div class='title new-line'>
-                                  <li key={Noibat.id}>
-                                    <Link to={`/tin-tuyen-sinh/${Noibat._id}`}> {Noibat.title}</Link>
-                                  </li>
-                                </div>
-                                
-                              )}
-                            )}
+          return(
+            <div class='title new-line'>
+              <li key={Noibat.id}>
+                <Link to={`/tin-tuyen-sinh/${Noibat._id}`}> {Noibat.title}</Link>
+              </li>
+            </div>
+            
+          )}
+        )}
         </div>
       </div>
   )

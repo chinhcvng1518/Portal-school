@@ -34,7 +34,7 @@ function Register() {
 
     try {
       const { data } = await axios.post(
-        `/api/v1/register`,
+        `/api/auth/register`,
         registerNewUser
       );
 

@@ -28,9 +28,11 @@ import Doanhnghiep from './pages/Doanhnghiep';
 import UserManagement from './pages/admin/UserManagement';
 import NewsManagement from './pages/admin/NewsManagement';
 import SingleNew from './pages/SingleNew';
-import Tinsukien from './components/Dashboard/Tinsukien';
-import Tintuyensinh from './pages/Tintuyensinh';
+import Tintuyensinh from './pages/Tin/Tintuyensinh';
 import Search from './pages/Search';
+import Hdqt from './pages/Tin/Hdqt';
+import Noibat from './pages/Tin/Noibat';
+import Tinsukien from './pages/Tin/Tinsukien';
 function App() {
   const { isLoading } = useGlobalContext();
   if (isLoading) {
@@ -91,6 +93,15 @@ function App() {
         </Route>
         <Route path='/tin-tuyen-sinh' exact>
           <Tintuyensinh/>
+        </Route>
+        <Route path='/tin-su-kien' exact>
+          <Tinsukien/>
+        </Route>
+        <Route path='/hoat-dong-quoc-te' exact>
+          <Hdqt/>
+        </Route>
+        <Route path='/noi-bat' exact>
+          <Noibat/>
         </Route>
         <Route path='/tu-van-tuyen-sinh' exact>
           <Tuvan/>

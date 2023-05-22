@@ -12,7 +12,7 @@ const Tuvan = () => {
     <div class='wrap-body-container'>
 
         <div class='row wrap-general-news'>
-          <div class='col-4-of-6 left-general-news'>
+          <div class='col-md-8 left-general-news'>
             <section class='section-center-left'>
               <div class='wrap-container-detail'>
                 <div class='row news-category-title'> 
@@ -42,7 +42,7 @@ const Tuvan = () => {
               </div>
             </section>
           </div>
-            <div class='col-2-of-6 right-general-news'>
+            <div class='col-md-4 right-general-news'>
             <section class='section-center-right'>
               <div class='wrap-home-notify'>
                 <div class='row new-category-title'>

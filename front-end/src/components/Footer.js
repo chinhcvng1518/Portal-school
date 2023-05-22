@@ -2,28 +2,28 @@ import React from 'react'
 import partner1 from "../assets/partner1.png"
 import partner2 from "../assets/image15.jpg"
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom'
 const Footer = () => {
   return (
     <Wrapper className='section-center'>
-    <footer class="text-white text-center text-lg-start wrap-partner-container">
-      <div class="container p-4">
+    <footer class="text-black text-center text-lg-start wrap-partner-container">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h6 class='text-body'>Trường Đại học Kinh tế - Tài chính Thành phố Hồ Chí Minh</h6>
+          <div class="col-md-6">
+            <h6>Trường Đại học Kinh tế - Tài chính Thành phố Hồ Chí Minh</h6>
 
-            <p style={{color:'black'}}>
+            <p>
               * Trụ sở 141 - 145 Điện Biên Phủ Phường 15, Quận Bình Thạnh, TP.HCM
             </p>
-            <p style={{color:'black'}}>
+            <p>
               * Cơ sở 276 - 282 Điện Biên Phủ Phường 17, Quận Bình Thạnh, TP.HCM
             </p>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-body">
+          <div class="col-md-3">
             <h6 >
               <span><i class="bi bi-envelope"></i></span>
-              <a href="#!" class="text-reset ">tuyensinh@uef.edu.vn</a>
+              <Link to='#' class="text-reset ">tuyensinh@uef.edu.vn</Link>
             </h6>
 
             <ul class="list-unstyled mb-0">
@@ -37,9 +37,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-body">
-            <div class="container">
-                <div class="row row-cols-2">
+          <div class="col-md-3 text-end">
+            <div class="container ">
+                <div class="row">
                   <div class="col">
                   <h6 class="text-uppercase fw-bold mb-4">
                     <a href="" class="me-4 text-reset">

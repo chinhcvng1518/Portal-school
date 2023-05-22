@@ -30,7 +30,7 @@ const Vienquocte= () => {
         </button>
       </div>
       <div class='row wrap-general-news'>
-          <div class='col-4-of-6 left-general-news'>
+          <div class='col-md-8 left-general-news'>
             <section class='section-center-left'>
               <div class='wrap-home-container'>
                 <div class='row new-category-title'>
@@ -40,7 +40,7 @@ const Vienquocte= () => {
 
                 </div>
                 <div class='row wrap-admission-news'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Sukien[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -53,11 +53,10 @@ const Vienquocte= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news'>
+                  <div class='col-md-6 wrap-next-news'>
                     {data.Sukien && data.Sukien.map((sukien,id) => (
                         
                         <div class='title new-line' key={id}>
-                      
                             <li>{sukien.title}</li>
                         </div>
 
@@ -76,7 +75,7 @@ const Vienquocte= () => {
 
                 </div>
                 <div class='row wrap-admission-news'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Thongtinthuctap[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -89,7 +88,7 @@ const Vienquocte= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news'>
+                  <div class='col-md-6 wrap-next-news'>
                     {data.Thongtinthuctap && data.Thongtinthuctap.map((thongtinthuctap,id) => (
                         
                         <div key={id} class='new-line'>
@@ -110,7 +109,7 @@ const Vienquocte= () => {
 
                 </div>
                 <div class='row'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Hanhtrangnghenghiep[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -123,7 +122,7 @@ const Vienquocte= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news' style={{ textAlign:'justify'}}>
+                  <div class='col-md-6 wrap-next-news' style={{ textAlign:'justify'}}>
                     {data.Hanhtrangnghenghiep && data.Hanhtrangnghenghiep.map((hanhtrangnghenghiep,id) => (
                         
                         <div key={id} class='new-line'>
@@ -136,7 +135,7 @@ const Vienquocte= () => {
               </div>
             </section>
           </div>
-          <div class='col-2-of-6 right-general-news'>
+          <div class='col-md-4 right-general-news'>
             <section class='section-center-right'>
               <div class='wrap-home-notify'>
                 <div class='row new-category-title'>

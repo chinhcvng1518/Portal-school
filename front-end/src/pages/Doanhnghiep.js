@@ -7,7 +7,7 @@ import image18 from '../assets/image18.jpg'
 import image19 from '../assets/image19.jpg'
 import { Link } from 'react-router-dom'
 import banner1 from '../assets/banner1.png'
-
+import Noibat from '../components/Dashboard/Noibat'
 const Doanhnghiep= () => {
   return (
     <section className='section-center'>
@@ -33,7 +33,7 @@ const Doanhnghiep= () => {
         </button>
       </div>
               <div class='row wrap-general-news'>
-          <div class='col-4-of-6 left-general-news'>
+          <div class='col-md-8 left-general-news'>
             <section class='section-center-left'>
               <div class='wrap-home-container'>
                 <div class='row new-category-title'>
@@ -43,7 +43,7 @@ const Doanhnghiep= () => {
 
                 </div>
                 <div class='row wrap-admission-news'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Sukien[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -56,7 +56,7 @@ const Doanhnghiep= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news'>
+                  <div class='col-md-6 wrap-next-news'>
                     {data.Sukien && data.Sukien.map((sukien,id) => (
                         
                         <div class='title new-line' key={id}>
@@ -79,7 +79,7 @@ const Doanhnghiep= () => {
 
                 </div>
                 <div class='row wrap-admission-news'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Thongtinthuctap[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -92,7 +92,7 @@ const Doanhnghiep= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news'>
+                  <div class='col-md-6 wrap-next-news'>
                     {data.Thongtinthuctap && data.Thongtinthuctap.map((thongtinthuctap,id) => (
                         
                         <div key={id} class='new-line'>
@@ -113,7 +113,7 @@ const Doanhnghiep= () => {
 
                 </div>
                 <div class='row'>
-                  <div class='col-3-of-6 wrap-first-news'>
+                  <div class='col-md-6 wrap-first-news'>
                       <div class='wrap-image'>
                         <img src={data.Hanhtrangnghenghiep[0].imageUrl} style={{width:'100%', height:'100%'}}/>
                       </div>
@@ -126,7 +126,7 @@ const Doanhnghiep= () => {
                         </div>
                       </div>
                   </div>
-                  <div class='col-3-of-6 wrap-next-news' style={{ textAlign:'justify'}}>
+                  <div class='col-md-6 wrap-next-news' style={{ textAlign:'justify'}}>
                     {data.Hanhtrangnghenghiep && data.Hanhtrangnghenghiep.map((hanhtrangnghenghiep,id) => (
                         
                         <div key={id} class='new-line'>
@@ -139,7 +139,7 @@ const Doanhnghiep= () => {
               </div>
             </section>
           </div>
-          <div class='col-2-of-6 right-general-news'>
+          <div class='col-md-4 right-general-news'>
             <section class='section-center-right'>
               <div class='wrap-home-notify'>
                 <div class='row new-category-title'>
@@ -161,24 +161,7 @@ const Doanhnghiep= () => {
                 </div>
             </section>
             <section class='section-center-right'>
-              <div class='wrap-home-notify'>
-                <div class='row new-category-title'>
-                  <Link >
-                    <div class='wrap-title'>
-                      Nổi bật
-                    </div>
-                  </Link>
-                </div>
-                <div class='row wrap-school-notify' style={{textAlign:'justify'}}>
-                  {data.Noibat && data.Noibat.map((noibat,id) => (
-                          
-                          <div key={id} class='new-line'>
-                        
-                              <li>{noibat.title}</li>
-                          </div>
-                          ))}
-                  </div>
-                </div>
+              <Noibat/>
             </section>
 
           </div>

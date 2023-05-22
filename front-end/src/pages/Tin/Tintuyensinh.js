@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import image16 from "../assets/image16.png"
+import image16 from "../../assets/image16.png"
 import axios from "axios";
 
 const Tintuyensinh = () => {

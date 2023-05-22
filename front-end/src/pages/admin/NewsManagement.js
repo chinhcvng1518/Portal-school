@@ -12,22 +12,15 @@ const NewsManagement = () => {
   const [news, setNews] = useState()
   const [selectedNew, setSelectedNew] = useState([])
 
-  const [proTitle, setProTitle] = useState()
-  const [proAuthor, setProAuthor] = useState()
-  const [proCategory, setProCategory] = useState()
-  const [proCode, setProCode] = useState()
-  const [proImage, setProImage] = useState([])
-  const [proContent, setProContent] = useState([])
+  const [title, setTitle] = useState()
+  const [author, setAuthor] = useState()
+  const [category, setCategory] = useState()
+  const [code, setCode] = useState()
+  const [image, setImage] = useState([])
+  const [content, setContent] = useState([])
 
   const [imageUrls, setImageUrls] = useState([])
   const [tmpImgs, setTmpImgs] = useState([])
-  const [timContent, setTimContent] = useState([])
-  const editorRef = useRef(null);
-  const log = () => {
-    if (editorRef.current) {
-      setTimContent(editorRef.current.getContent())
-    }
-  };
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -42,15 +35,6 @@ const NewsManagement = () => {
       ['clean'],
     ],
   };
-  
-  
-  const category = [
-    { key: 1, value: 'Tuyển sinh - Đào tạo' },
-    { key: 2, value: 'Tin tức sự kiện' },
-    { key: 3, value: 'Hoạt động quốc tế' },
-    { key: 4, value: 'Nổi bật' },
-  ]
-
   const { alert, showAlert, loading, setLoading, hideAlert } = useLocalState()
 
   useEffect(() => {
@@ -64,58 +48,6 @@ const NewsManagement = () => {
       })
   }, [])
 
-//   const handleUploadImage = (e) => {
-//     e.preventDefault()
-//     hideAlert()
-//     setLoading(true)
-
-//     // console.log(proImage)
-
-//     if (!proCode) {
-//       showAlert({ text: 'Please provide news code first' })
-//       setTimeout(() => hideAlert(), 3000)
-//     }
-
-//     if (!proImage || proImage.length < 1) {
-//       showAlert({ text: 'Please choose images to upload' })
-//       setTimeout(() => hideAlert(), 3000)
-//     }
-
-//     let data = new FormData()
-
-//     Array.from(proImage).forEach((img) => {
-//       data.append('image', img)
-//     })
-
-//     const instance = axios.create({
-//       withCredentials: true,
-//       headers: {
-//         'Content-Type': 'multipart/form-data',
-//       },
-//     })
-
-//     instance
-//       .post(
-//         `http://localhost:5000/api/v1/product/upload-product-image/${proCode}`,
-//         data
-//       )
-//       .then((response) => {
-//         // console.log(response.data)
-//         setImageUrls(response.data.result)
-//         showAlert({
-//           text: 'Upload Image Successfully',
-//           type: 'success',
-//         })
-//         setTimeout(() => hideAlert(), 3000)
-//         setLoading(false)
-//       })
-//       .catch((error) => {
-//         showAlert({ text: error.response.data.msg })
-//         setTimeout(() => hideAlert(), 3000)
-//         setLoading(false)
-//       })
-//   }
-
   const handleEditNew = (e) => {
     e.preventDefault()
     hideAlert()
@@ -126,11 +58,11 @@ const NewsManagement = () => {
     })
     instance
       .patch(url, {
-        title: proTitle,
-        author: proAuthor,
-        category: proCategory,
-        content: proContent,
-        code: proCode,
+        title,
+        author,
+        category,
+        content,
+        code,
         
       })
       .then((response) => {
@@ -151,7 +83,6 @@ const NewsManagement = () => {
 
   const handleDeleteNew = (e) => {
     e.preventDefault()
-    // console.log(selectedProduct.id)
 
     const url = `http://localhost:5000/api/new/${selectedNew._id}`
 
@@ -162,7 +93,6 @@ const NewsManagement = () => {
     instance
       .delete(url)
       .then((response) => {
-        // console.log(response.data)
         showAlert({
           text: 'Upload New Successfully',
           type: 'success',
@@ -173,7 +103,6 @@ const NewsManagement = () => {
       .catch((error) => {
         showAlert({ text: error.response.data.msg })
         setTimeout(() => hideAlert(), 3000)
-        // console.log(error)
       })
   }
 
@@ -189,11 +118,11 @@ const NewsManagement = () => {
 
     instance
       .post('http://localhost:5000/api/new', {
-        title: proTitle,
-        author: proAuthor,
-        category: proCategory,
-        content: proContent,
-        code: proCode,
+        title,
+        author,
+        category,
+        content,
+        code,
         image: imageUrls,
       })
       .then((response) => {
@@ -216,21 +145,19 @@ const NewsManagement = () => {
     hideAlert()
     setLoading(true)
 
-    // console.log(proImage)
-
-    if (!proCode) {
+    if (!code) {
       showAlert({ text: 'Please provide product code first' })
       setTimeout(() => hideAlert(), 3000)
     }
 
-    if (!proImage || proImage.length < 1) {
+    if (!image || image.length < 1) {
       showAlert({ text: 'Please choose images to upload' })
       setTimeout(() => hideAlert(), 3000)
     }
 
     let data = new FormData()
 
-    Array.from(proImage).forEach((img) => {
+    Array.from(image).forEach((img) => {
       data.append('image', img)
     })
 
@@ -243,11 +170,10 @@ const NewsManagement = () => {
 
     instance
       .post(
-        `http://localhost:5000/api/new/upload-new-image/${proCode}`,
+        `http://localhost:5000/api/new/upload-new-image/${code}`,
         data
       )
       .then((response) => {
-        // console.log(response.data)
         setImageUrls(response.data.result)
         showAlert({
           text: 'Upload Image Successfully',
@@ -287,8 +213,6 @@ const NewsManagement = () => {
         setTimeout(() => hideAlert(), 3000)
         setLoading(false)
       })
-
-//     console.log(url, newsCode)
    }
 
   if (!news) return null
@@ -336,7 +260,7 @@ const NewsManagement = () => {
                         type='text'
                         className='form-control'
                         id='floatingInput'
-                        onChange={(e) => setProTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                       />
                       <label for='floatingInput'>Tiêu đề</label>
                     </div>
@@ -345,7 +269,7 @@ const NewsManagement = () => {
                         type='number'
                         className='form-control'
                         id='floatingInput'
-                        onChange={(e) => setProCode(e.target.value)}
+                        onChange={(e) => setCode(e.target.value)}
                       />
                       <label for='floatingInput'>Code</label>
                     </div>
@@ -354,31 +278,32 @@ const NewsManagement = () => {
                         type='text'
                         className='form-control'
                         id='floatingName'
-                        onChange={(e) => setProAuthor(e.target.value)}
+                        onChange={(e) => setAuthor(e.target.value)}
                       />
                       <label for='floatingName'>Tác giả</label>
                     </div>
                     <div className='form-floating mb-3'>
-                      <ReactQuill value={proContent} onChange={setProContent} modules={modules} />                    
+                      <ReactQuill value={content} onChange={setContent} modules={modules} />                    
                     </div>
                     <div className='form-floating mb-3'>
+                
                       <select
-                        id='floatingBrand'
-                        name='floatingBrand'
-                        className='form-control'
-                        onChange={(e) => {
-                          const selectedCategory = e.target.value
-                          setProCategory(selectedCategory)
-                        }}
-                      >
-                        <option selected>
-                          <p className='text-muted'>Loại bài viết</p>
-                        </option>
-                        {category.map((unit) => (
-                          <option value={unit.value}>{unit.value}</option>
-                        ))}
-                      </select>
+                          id='floatingBrand'
+                          name='floatingBrand'
+                          className='form-control'
+                          value={selectedNew.category}
+                          
+                          onChange={(e) => {
+                            setCategory(category)
+                          }}
+                        >
+                            <option value={"Tuyển sinh - Đào tạo"}>Tuyển sinh - Đào tạo</option>
+                            <option value={"Tin tức - Sự kiện"}>Tin tức - Sự kiện</option>
+                            <option value={"Hoạt động quốc tế"}>Hoạt động quốc tế</option>
+                            <option value={"Nổi bật"}>Nổi bật</option>                          
+                        </select>
                       <label for='floatingBrand'>Phân loại</label>
+                      
                     </div>
 
                     <div className='form-floating mb-3'>
@@ -389,7 +314,7 @@ const NewsManagement = () => {
                             name='image'
                             id='image'
                             multiple
-                            onChange={(e) => setProImage(e.target.files)}
+                            onChange={(e) => setImage(e.target.files)}
                           />
 
                           <button
@@ -508,7 +433,7 @@ const NewsManagement = () => {
                           className='form-control'
                           id='floatingInput'
                           defaultValue={selectedNew.title}
-                          onChange={(e) => setProTitle(e.target.value)}
+                          onChange={(e) => setTitle(e.target.value)}
                         />
                         <label for='floatingInput'>Tiêu đề</label>
                       </div>
@@ -518,7 +443,7 @@ const NewsManagement = () => {
                         className='form-control'
                         id='floatingInput'
                         disabled
-                        onChange={(e) => setProCode(e.target.value)}
+                        onChange={(e) => setCode(e.target.value)}
                       />
                       <label for='floatingInput'>Code</label>
                     </div>
@@ -528,12 +453,12 @@ const NewsManagement = () => {
                           className='form-control'
                           id='floatingName'
                           defaultValue={selectedNew.author}
-                          onChange={(e) => setProAuthor(e.target.value)}
+                          onChange={(e) => setAuthor(e.target.value)}
                         />
                         <label for='floatingName'>Tác giả</label>
                       </div>
                       <div className='form-floating mb-3'>
-                        <ReactQuill value={selectedNew.content} onChange={setSelectedNew.content} modules={modules} />
+                        <ReactQuill theme='snow' value={selectedNew.content} onChange={setSelectedNew.content} modules={modules} />
                       </div>
                       <div className='form-floating mb-3'>
                         <select
@@ -543,16 +468,13 @@ const NewsManagement = () => {
                           value={selectedNew.category}
                           disabled
                           onChange={(e) => {
-                            const selectedCategory = e.target.value
-                            setProCategory(selectedCategory)
+                            setCategory(category)
                           }}
                         >
-                          <option selected>
-                            <p className='text-muted'>Loại bài viết</p>
-                          </option>
-                          {category.map((unit) => (
-                            <option value={unit.value}>{unit.value}</option>
-                          ))}
+                            <option value={"Tuyển sinh - Đào tạo"}>Tuyển sinh - Đào tạo</option>
+                            <option value={"Tin tức - Sự kiện"}>Tin tức - Sự kiện</option>
+                            <option value={"Hoạt động quốc tế"}>Hoạt động quốc tế</option>
+                            <option value={"Nổi bật"}>Nổi bật</option>                          
                         </select>
                         <label for='floatingBrand'>Phân loại</label>
                       </div>

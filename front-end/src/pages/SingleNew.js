@@ -6,7 +6,6 @@ import Noibat from '../components/Dashboard/Noibat'
 import References from '../components/Dashboard/References'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import {formatISO9075} from "date-fns";
 
 const SingleNew = () => {
     const {id} = useParams()
@@ -19,7 +18,6 @@ const SingleNew = () => {
             axios
             .get(`http://localhost:5000/api/new/${id}`)
             .then((response) => {
-                
                 setSelectedNew(response.data.news)
                 console.log(response.data.news)
             })
@@ -29,7 +27,7 @@ const SingleNew = () => {
         }
     }, [id])
 
-    if(!selectedNew ) return <p>Loading</p>
+    if(!selectedNew ) return null
    
   return (
     <Wrapper className='section-center'>
@@ -45,7 +43,7 @@ const SingleNew = () => {
                         <div class='row wrap-news-detail'>
                             <h1 class='new-detail-title'>{selectedNew.title}</h1>
                             <div class='new-date'>
-                                {/* <time>{formatISO9075(new Date(selectedNew.createdAt))}</time> */}
+                                {new Date(selectedNew.createdAt).toDateString()}
                             </div>
                             <div class='wrap-content '>
                                 <div dangerouslySetInnerHTML={{__html:selectedNew.content}}/>
@@ -62,7 +60,7 @@ const SingleNew = () => {
                                 </div> */}
                                 <div class='author'>
                                     <strong>
-                                        <span>{selectedNew.author}</span>
+                                        <span>Tác giả: {selectedNew.author}</span>
                                     </strong>
                                 </div>
                             </div>

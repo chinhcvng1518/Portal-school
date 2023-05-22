@@ -20,7 +20,6 @@ const AppProvider = ({ children }) => {
     try {
       const { data } = await axios.get(`/api/user/showMe`)
       saveUser(data.user)
-      console.log(data.user)
     } catch (error) {
       removeUser()
     }

@@ -5,6 +5,7 @@ import partner1 from "../assets/partner1.png"
 import partner2 from "../assets/image15.jpg"
 
 const Nganhdaotao = () => {
+    
   return (
     <Wrapper>
         <section class='section-bottom'>
@@ -12,9 +13,9 @@ const Nganhdaotao = () => {
                 <div class='wrap-program-title'>
                     <div class='wrap-major-title'>Các ngành đào tạo</div>
                 </div>
-                <div class='row wrap-major-content' style={{clear:'both'}}>
-                    <div class='col' style={{width:'25%'}}>
-                        <div class='major-home-title'>
+                <div class='row wrap-major-content'>
+                    <div class='col-md-3 major-home-block'>
+                        <div class='major-home-title dropdown'>
                             <Link to='/qtkd'>
                                 1. Quản trị kinh doanh
                             </Link>
@@ -61,7 +62,7 @@ const Nganhdaotao = () => {
                         </div>
 
                     </div>
-                    <div class='col' style={{width:'25%'}}>
+                    <div class='col-md-3 major-home-block'>
                         <div class='major-home-title'>
                             <Link>
                                 10. Kinh doanh thương mại
@@ -105,7 +106,7 @@ const Nganhdaotao = () => {
 
 
                     </div>
-                    <div class='col' style={{width:'25%'}}>
+                    <div class='col-md-3 major-home-block'>
                         <div class='major-home-title'>
                             <Link>
                                 18. Quan hệ quốc tế
@@ -149,7 +150,7 @@ const Nganhdaotao = () => {
 
 
                     </div>
-                    <div class='col' style={{width:'25%'}}>
+                    <div class='col-md-3 major-home-block'>
                         <div class='major-home-title'>
                             <Link>
                                 26. Luật kinh tế
@@ -205,59 +206,24 @@ const Nganhdaotao = () => {
                 <div class='row'>
                     <div class='wrap-partner-title'>Doanh nghiệp đối tác</div>
                 </div>
-                <div class='row wrap-slider-partner'>
-                          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active text-center">
-              <ul class='company-list' style={{listStyleType:'none', padding:'0', display:'inline-flex'}}>
-                <li style={{margin:'0px 10px'}}>
-                  <img src={partner1} style={{height:96}} />
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:96}} />
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:96}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:96}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:96}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:96}}/>
-                </li>
-                
-              </ul>
-            </div>
-            <div class="carousel-item text-center">
-              <ul class='company-list' style={{listStyleType:'none', padding:'0', display:'inline-flex'}}>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner2} style={{height:128}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner2} style={{height:128}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner2} style={{height:128}}/>
-                </li>
-                <li style={{margin:'0px 20px'}}>
-                  <img src={partner1} style={{height:128}}/>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>  
-                </div>
+                <div class="swiper-container">
+    <div class="swiper-wrapper">
+        {/* <!-- Slides --> */}
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        ...
+    </div>
+    {/* <!-- Nếu cần pagination --> */}
+    <div class="swiper-pagination"></div>
+
+    {/* <!-- Nếu cần navigation --> */}
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    {/* <!-- Nếu cần scrollbar --> */}
+    <div class="swiper-scrollbar"></div>
+</div>
             </div>
         </section>
     </Wrapper>

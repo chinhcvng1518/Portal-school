@@ -20,21 +20,22 @@ const Hdqt = () => {
   return (
     <div class='wrap-home-container'>
       <div class='row new-category-title'>
-        <Link to='/thong-tin-tuyen-sinh'>
+        <Link to='/hoat-dong-quoc-te'>
           <div class='wrap-title'>Hoạt động quốc tế</div>
         </Link>
 
       </div>
       <div class='row wrap-admission-news'>
       {news[0] ? <>
-        <div class='col-3-of-6 wrap-first-news'>
+        <div class='col-md-6 wrap-first-news'>
             <div class='wrap-image'>
               
-              <img src={!news[0].image[0] ? '' :news[0].image[0] } style={{width:'400px', height:'250px'}} alt=""/>
-            </div>
+            <Link to={`/tin-tuyen-sinh/${news[0]._id}`}>
+                <img src={!news[0].image[0] ? '' :news[0].image[0] } style={{width:'100%', height:'100%'}}  alt=""/>
+              </Link>            </div>
             <div class='wrap-news'>
-              <div class='news-title'>
-                {news[0].title}
+              <div class='news-title' key={news.id}>
+                <Link to={`/tin-tuyen-sinh/${news[0]._id}`}>{news[0].title}</Link>  
               </div>
               <div class='news-summary'>                
               <div dangerouslySetInnerHTML={{__html:news[0].content.slice(0,251) + "..."}}/>
@@ -44,7 +45,7 @@ const Hdqt = () => {
         </div>
       </> : <><p>Loadiing</p></>}
         
-        <div class='col-3-of-6 wrap-next-news'>
+        <div class='col-md-6 wrap-next-news'>
           {news && news.map((Hdqt, index) =>
             {
             

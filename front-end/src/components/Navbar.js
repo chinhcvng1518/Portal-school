@@ -133,7 +133,7 @@ const Navbar = () => {
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <Link to='search'><button class="btn btn-outline-success" type="submit">Search</button></Link>
+        <Link to='search'><button class="btn btn-outline-success">Search</button></Link>
         
       </form>
           <div className='cart-btn-wrapper'>
@@ -143,6 +143,7 @@ const Navbar = () => {
                 to="/login"
                 style={{ textDecoration: "none", color: "black" }}
               >
+                
                 <button className="auth-btn">
                   Login <FaUser />
                 </button>

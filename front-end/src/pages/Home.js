@@ -21,7 +21,7 @@ function Home() {
     <Wrapper className='section-center'>
       <Carousel/>
       <div class='row wrap-general-news'>
-        <div class='col-4-of-6 left-general-news' style={{borderBottom:'inset'}}>
+        <div class='col-md-8 left-general-news' style={{borderBottom:'inset'}}>
           <section class='section-center-left'>
             <Tuyensinh/>
             <Tinsukien/>
@@ -29,7 +29,7 @@ function Home() {
             <Lichsukien/>
           </section>
         </div>
-        <div class='col-2-of-6 right-general-news' style={{borderLeft:'outset', borderBottom:'inset'}}>
+        <div class='col-md-4 right-general-news' style={{borderLeft:'outset', borderBottom:'inset'}}>
           <section class='section-center-right'>
             <Noibat/>
             <References/>
